@@ -103,15 +103,15 @@ io.sockets.on('connection', function (socket) {
           
 
           receivedData += data.toString();
-          for (var i = 0; i < sockets.length; i++) {
-               sockets[i].emit('grow',{size: receivedData});
-             };
+
           console.log(receivedData);
           if (receivedData.indexOf('E') >= 0 && receivedData.indexOf('B') >= 0) {
            // save the data between 'B' and 'E'
              sendData = receivedData .substring(receivedData.indexOf('B') + 1, receivedData .indexOf('E'));
              receivedData = '';
              console.log('recieving', sendData);
+             //uncomment me for broadcast! 
+             
              // for (var i = 0; i < sockets.length; i++) {
              //   sockets[i].emit('grow',{size: receivedData});
              // };
