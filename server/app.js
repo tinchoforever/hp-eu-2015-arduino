@@ -103,9 +103,9 @@ io.sockets.on('connection', function (socket) {
           
 
           receivedData += data.toString();
-          // for (var i = 0; i < sockets.length; i++) {
-          //      sockets[i].emit('grow',{size: receivedData});
-          //    };
+          for (var i = 0; i < sockets.length; i++) {
+               sockets[i].emit('grow',{size: receivedData});
+             };
           console.log(receivedData);
           if (receivedData.indexOf('E') >= 0 && receivedData.indexOf('B') >= 0) {
            // save the data between 'B' and 'E'
