@@ -21,14 +21,15 @@ Requirements
 
 Before you start is important to have the next set of tools installed.
 * [Node.js]
-* [Arduino] - Version 1.6 llamada Arduino 2
+* [Express Generator]
+* [Arduino IDE] - Version 1.6 / Arduino 2.
 
 
 Once you have it, just do :
 ```bash
 $ npm install
 ```
-* [Express]
+* [Express Generator]
 * [D3]
 * [Socket.io]
 
@@ -68,3 +69,6 @@ Free to use and specially free to teach!
 [Node.js]: http://nodejs.org
 [Express]: http://expressjs.com
 [Arduino]: http://arduino.cc
+[Arduino IDE]:https://www.arduino.cc/en/Main/Software
+[Bower]:http://bower.io/
+[Express Generator]:http://expressjs.com/starter/generator.html
