@@ -34,6 +34,21 @@ $ npm install
 * [Socket.io]
 
 
+Setup setps
+```bash
+$ express myapp --ejs
+$ npm install
+$ npm install socket-io --save
+$ npm install serialport  --save
+
+$ cd public
+$ bower install d3 materialize --save
+
+```
+* [Express Generator]
+* [D3]
+* [Socket.io]
+
 
 
 

@@ -1,0 +1,17 @@
+{
+  "name": "public",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tinchoforever/hp-eu-2015-arduino",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.6",
+    "materialize": "~0.97.0"
+  }
+}

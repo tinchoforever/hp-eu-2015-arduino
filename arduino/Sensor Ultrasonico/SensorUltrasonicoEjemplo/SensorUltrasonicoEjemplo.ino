@@ -20,4 +20,11 @@ void loop() {
   Serial.print("Ping: ");         // Imprimimos Ping: en el puerto serie
   Serial.print(uS / US_ROUNDTRIP_CM); // convertimos la variable uS (que tiene el tiempo que tardo el ping en ir y volver) a cm, y lo imprimimos por el puerto serie.
   Serial.println("cm");
+ //   //if(soundReading > 34){
+ //   Serial.print("B"); 
+ //   Serial.println(soundReading * 100);
+ //  Serial.print("E"); 
+   
+ //     delay(1000);		//Espera 100 milisegundos
+ // //}
 }
