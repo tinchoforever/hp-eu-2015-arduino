@@ -15,9 +15,9 @@ void setup()
 void loop() 
 {
   int sensorValue = analogRead(SOUND_SENSOR);//use A0 to read the electrical signal
-  Serial.print("sensorValue ");
+  Serial.print("B");
   Serial.println(sensorValue);
-  
+  Serial.print("E");
   delay(500);
   
 }

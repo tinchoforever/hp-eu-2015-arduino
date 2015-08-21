@@ -1,18 +1,37 @@
-int soundSensorPin=A0; //pin al que conectamos el Microfono
-int soundReading=0;
+// Function: If the sound sensor senses a sound that is up to the threshold you set in the code, the LED is on for 200ms.
+// Hardware: Grove - Sound Sensor, Grove - LED
 
-void setup(){
- Serial.begin(9600);
+/*macro definitions of the sound sensor and the LED*/
+#define SOUND_SENSOR A0
+#define LED 3      // the number of the LED pin
+
+#define THRESHOLD_VALUE 400//The threshold to turn the led on 400.00*5/1024 = 1.95v
+void setup() 
+{
+    Serial.begin(9600);
+    pins_init();
+}
+ 
+void loop() 
+{
+  int sensorValue = analogRead(SOUND_SENSOR);//use A0 to read the electrical signal
+  Serial.print("B");
+  Serial.println(sensorValue);
+  Serial.print("E");
+  delay(500);
+  
 }
 
-void loop(){
- soundReading=analogRead(soundSensorPin);
- 
- //if(soundReading > 34){
-   Serial.print("B"); 
-   Serial.println(soundReading * 100);
-  Serial.print("E"); 
-   
-     delay(1000);		//Espera 100 milisegundos
- //}
+void pins_init()
+{
+  pinMode(LED, OUTPUT);
+  pinMode(SOUND_SENSOR, INPUT); 
+}
+void turnOnLED()
+{
+  digitalWrite(LED,HIGH);
+}
+void turnOffLED()
+{
+  digitalWrite(LED,LOW);
 }
