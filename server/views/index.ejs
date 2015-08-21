@@ -3,9 +3,17 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/bower_components/materialize/dist/css/materialize.min.css' />
+
   </head>
+  <script src="/socket.io/socket.io.js"></script>
+
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  	<main>
+    	<h1 class="mutate">Hello</h1>
+    </main>
   </body>
+  <script src="/javascripts/main.js"></script>
+  <script src="/bower_components/d3/d3.min.js"></script>
+  <script src="/bower_components/jquery/dist/jquery.min.js"></script>
 </html>

@@ -61,9 +61,10 @@ app.use(function(err, req, res, next) {
 //io sockets would address to all the web-clients talking to this nodejs server
 var io = require('socket.io')();
 
+var sockets = [];
 io.sockets.on('connection', function (socket) {
   console.log("new connnect"); 
-
+  sockets.push(socket);
   //some web-client disconnects
   socket.on('disconnect', function (socket) {
     console.log("disconnect");
@@ -91,38 +92,44 @@ io.sockets.on('connection', function (socket) {
 
   var SerialPort = require("serialport").SerialPort;
   //Reemplazalo con el tuyo :)
-//   var port = "/dev/ttyACM0";
-//   var serialPort = new SerialPort(port, {
-//       baudrate: 9600
-//   });
-//   var receivedData = '';
-//   serialPort.on("open", function() {
-//       console.log('Arudino online!');
-//       serialPort.on('data', function(data) {
+  var port = "/dev/cu.usbmodem1411";
+  var serialPort = new SerialPort(port, {
+      baudrate: 115200
+  });
+  var receivedData = '';
+  serialPort.on("open", function() {
+      console.log('Arudino online!');
+      serialPort.on('data', function(data) {
           
 
-//           receivedData += data.toString();
-//           console.log(receivedData);
-//           if (receivedData.indexOf('E') >= 0 && receivedData.indexOf('B') >= 0) {
-//            // save the data between 'B' and 'E'
-//              sendData = receivedData .substring(receivedData.indexOf('B') + 1, receivedData .indexOf('E'));
-//              receivedData = '';
-//              console.log('sending', sendData);
-//            }
+          receivedData += data.toString();
+          for (var i = 0; i < sockets.length; i++) {
+               sockets[i].emit('grow',{size: receivedData});
+             };
+          console.log(receivedData);
+          if (receivedData.indexOf('E') >= 0 && receivedData.indexOf('B') >= 0) {
+           // save the data between 'B' and 'E'
+             sendData = receivedData .substring(receivedData.indexOf('B') + 1, receivedData .indexOf('E'));
+             receivedData = '';
+             console.log('recieving', sendData);
+             // for (var i = 0; i < sockets.length; i++) {
+             //   sockets[i].emit('grow',{size: receivedData});
+             // };
+           }
 
-//       });
+      });
 
-//   });
+  });
     
     
     
-//   process.on('SIGTERM', function () {
-//     if (server === undefined) return;
-//     server.close(function () {
-//       // Disconnect from cluster master
-//       process.disconnect && process.disconnect();
-//     });
-// });
+  process.on('SIGTERM', function () {
+    if (server === undefined) return;
+    server.close(function () {
+      // Disconnect from cluster master
+      process.disconnect && process.disconnect();
+    });
+});
 
 
 
